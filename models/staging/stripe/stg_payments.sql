@@ -6,7 +6,8 @@ with payments as (
   status as payment_status,
   amount/100 as payment_amount,
   created as created_at
-FROM
-  `dbt-tutorial`.stripe.payment)
+    from {{source('stripe','payment')}}
+  )
 
   select * from payments
+  
